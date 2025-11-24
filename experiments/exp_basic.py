@@ -1,14 +1,12 @@
 import os
 import torch
-from model import Transformer, iTransformer, WDformer
+from model import WDformer
 
 
 class Exp_Basic(object):
     def __init__(self, args):
         self.args = args
         self.model_dict = {
-            'Transformer': Transformer,
-            'iTransformer': iTransformer,
             'WDformer': WDformer,
         }
         self.device = self._acquire_device()
