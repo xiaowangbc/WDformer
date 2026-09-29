@@ -148,7 +148,7 @@ class DataEmbedding_wd(nn.Module):
         self.w_size = w_size
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.d_len = d_model // (w_size+1)
-        self.linear_layers = []
+        self.linear_layers = nn.ModuleList()
         self.linear_layers.append(nn.Linear(c_in // (2 ** w_size), self.d_len).to(device))
         for i in range(w_size - 1):
             self.linear_layers.append(nn.Linear(c_in // (2 ** (w_size - i)), self.d_len).to(device))
